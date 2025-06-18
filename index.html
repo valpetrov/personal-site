@@ -3,11 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="googlebot" content="noindex, nofollow">
     <title>Val Petrov - Software Engineer & Engineering Manager</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Password Protection Screen -->
+    <div id="password-screen" class="password-screen">
+        <div class="password-container">
+            <div class="password-box">
+                <h2>Access Required</h2>
+                <p>Please enter the password to view this site</p>
+                <form id="password-form">
+                    <input type="password" id="password-input" placeholder="Enter password" required>
+                    <button type="submit">Enter</button>
+                </form>
+                <div id="error-message" class="error-message" style="display: none;">Incorrect password. Please try again.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Site Content (hidden by default) -->
+    <div id="main-content" class="main-content" style="display: none;">
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
@@ -118,5 +137,43 @@
             <p>&copy; 2024 Val Petrov. All rights reserved.</p>
         </div>
     </footer>
+    </div>
+
+    <script>
+        // Password protection functionality
+        const correctPassword = 'mysite';
+        const passwordScreen = document.getElementById('password-screen');
+        const mainContent = document.getElementById('main-content');
+        const passwordForm = document.getElementById('password-form');
+        const passwordInput = document.getElementById('password-input');
+        const errorMessage = document.getElementById('error-message');
+
+        // Check if user is already authenticated
+        if (sessionStorage.getItem('authenticated') === 'true') {
+            showMainContent();
+        }
+
+        passwordForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const enteredPassword = passwordInput.value;
+            
+            if (enteredPassword === correctPassword) {
+                sessionStorage.setItem('authenticated', 'true');
+                showMainContent();
+            } else {
+                errorMessage.style.display = 'block';
+                passwordInput.value = '';
+                passwordInput.focus();
+            }
+        });
+
+        function showMainContent() {
+            passwordScreen.style.display = 'none';
+            mainContent.style.display = 'block';
+        }
+
+        // Focus on password input when page loads
+        passwordInput.focus();
+    </script>
 </body>
 </html>
