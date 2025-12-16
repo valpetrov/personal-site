@@ -7,7 +7,7 @@
     <meta name="googlebot" content="noindex, nofollow">
     <title>Val Petrov - Software Engineer & Engineering Manager</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
@@ -38,43 +38,103 @@
                 </a>
             </div>
             <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="#home">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#activities">Activities</a></li>
-                <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
     <main>
         <section id="home" class="hero">
-            <div class="hero-content">
-                <h1>Val Petrov</h1>
-                <p class="hero-subtitle">Polyglot Programmer & Engineering Manager</p>
-                <p class="hero-description">Solving challenging problems in financial technology with expertise across multiple programming languages</p>
-            </div>
-        </section>
-
-        <section id="about" class="about">
-            <div class="container">
-                <h2>About</h2>
-                <div class="about-content">
-                    <div class="about-image">
-                        <img src="val-headshot.jpeg" alt="Val Petrov" class="headshot">
+            <div class="container hero-grid">
+                <div class="hero-content-wrapper">
+                    <!-- Status badge -->
+                    <div class="status-badge">
+                        <span class="status-dot"></span>
+                        Available for opportunities
                     </div>
-                    <div class="about-text">
-                        <p>Highly trained, motivated, hands-on and ambitious Technical Lead and Architect with 14+ years of experience in architecture, design, engineering and operations. Additional skills in evaluating internal functions and business development strategies, creating business architecture models and methods and assessing systems engineering and talent recruiting.</p>
 
-                        <p>Technical background includes extensive systems integration, directory services, identity, and access management, development, operations, and architecture at the system, operational, and enterprise levels. Strong track record of excellence and of delivering high-quality, innovative work.</p>
+                    <!-- Name with accent -->
+                    <div class="hero-heading">
+                        <h1>Val Petrov</h1>
+                        <p class="hero-subtitle">Engineering Leader</p>
+                    </div>
 
-                        <p>Flexible, adaptable, and able to autonomously manage multiple tasks in a dynamic, fast-paced environment. Looking for a high-level opportunity in an active organization where my expertise and skills will be fully utilized.</p>
+                    <!-- Value proposition -->
+                    <p class="hero-value-prop">I build the systems that power trading floors—portfolio platforms processing millions of transactions, real-time data pipelines, enterprise security infrastructure.</p>
+
+                    <!-- Quick stats -->
+                    <div class="hero-stats-compact">
+                        <div class="stat-compact">
+                            <div class="stat-value">14+</div>
+                            <div class="stat-label-sm">Years Experience</div>
+                        </div>
+                        <div class="stat-compact">
+                            <div class="stat-value">6M+</div>
+                            <div class="stat-label-sm">Daily Transactions</div>
+                        </div>
+                        <div class="stat-compact">
+                            <div class="stat-value">8+</div>
+                            <div class="stat-label-sm">Languages</div>
+                        </div>
+                    </div>
+
+                    <!-- CTA buttons -->
+                    <div class="hero-cta">
+                        <a href="#experience" class="btn-primary">
+                            View My Work
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:val@example.com" class="btn-secondary">Get in Touch</a>
+                    </div>
+                </div>
+
+                <!-- Right - Photo with decorative frame -->
+                <div class="hero-image-wrapper">
+                    <div class="image-frame">
+                        <div class="frame-border frame-border-outer"></div>
+                        <div class="frame-border frame-border-inner"></div>
+                        <div class="frame-accent frame-accent-top"></div>
+                        <div class="frame-accent frame-accent-bottom"></div>
+                        <div class="headshot-container">
+                            <img src="val-headshot.jpeg" alt="Val Petrov" class="headshot-modern">
+                            <div class="headshot-overlay"></div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Bottom accent line with social -->
+            <div class="container">
+                <div class="hero-footer">
+                    <div class="footer-line"></div>
+                    <div class="hero-social-modern">
+                        <a href="https://github.com/valpetrov" target="_blank" class="social-icon" aria-label="GitHub">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://linkedin.com/in/valpetrov" target="_blank" class="social-icon" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:val@example.com" class="social-icon" aria-label="Email">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="footer-line"></div>
+                </div>
+            </div>
         </section>
+
 
         <section id="skills" class="skills">
             <div class="container">
@@ -115,125 +175,159 @@
                 </div>
             </div>
         </section>
-
-        <section id="experience" class="experience">
+        <section id="experience" class="timeline-section">
             <div class="container">
                 <h2>Professional Experience</h2>
-
-                <div class="job">
-                    <div class="job-header">
-                        <h3>Software Engineering Lead – Portfolio Management</h3>
-                        <span class="job-period">Apr 2025 – Present</span>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-date">Apr 2025 - Present</div>
+                            <h3>Point72</h3>
+                            <p class="timeline-role">Software Engineering Lead</p>
+                            <p class="timeline-highlight">Portfolio Management Tech</p>
+                        </div>
+                        <div class="timeline-details">
+                            <h4>Point72, Macro Technology Team, New York, NY</h4>
+                            <ul>
+                                <li>Lead UI and API efforts for portfolio management technology for Macro Technology</li>
+                                <li>Architect and implement FX roll process from Murex to Orchestrade</li>
+                                <li>Develop Orchestrade API integrations</li>
+                                <li>Build comprehensive regression testing framework ensuring system reliability</li>
+                                <li>Implement scalable architecture using .NET Framework and .NET Core</li>
+                                <li>Optimize and improve CI/CD pipelines using Jenkins for automated deployment</li>
+                            </ul>
+                            <p class="tech-stack"><strong>Technology:</strong> C#, Python, Kafka, Orchestrade, .NET Framework, .NET Core, Jenkins, SQL Server</p>
+                        </div>
                     </div>
-                    <p class="company">Point72, Macro Technology Team, New York, NY</p>
-                    <ul class="job-responsibilities">
-                        <li>Lead UI and API efforts for portfolio management technology for Macro Technology</li>
-                        <li>Architect and implement FX roll process from Murex to Orchestrade</li>
-                        <li>Develop Orchestrade API integrations</li>
-                        <li>Build comprehensive regression testing framework ensuring system reliability</li>
-                        <li>Implement scalable architecture using .NET Framework and .NET Core</li>
-                        <li>Optimize and improve CI/CD pipelines using Jenkins for automated deployment</li>
-                    </ul>
-                    <p class="tech-stack"><strong>Technology:</strong> C#, Python, Kafka, Orchestrade, .NET Framework, .NET Core, Jenkins, SQL Server</p>
-                </div>
 
-                <div class="job">
-                    <div class="job-header">
-                        <h3>Data Warehouse Lead – Security Master</h3>
-                        <span class="job-period">Nov 2022 – Jan 2025</span>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-date">Nov 2022 - Jan 2025</div>
+                            <h3>Centiva Capital</h3>
+                            <p class="timeline-role">Data Warehouse Lead</p>
+                            <p class="timeline-highlight">Security Master System</p>
+                        </div>
+                        <div class="timeline-details">
+                            <h4>Centiva Capital, New York, NY</h4>
+                            <ul>
+                                <li>Design and develop firm's new security master</li>
+                                <li>Design and support critical services including authorization service, new instrument creation service, and their corresponding GUIs</li>
+                                <li>Support existing post-trade systems - reconciliations, security mapping</li>
+                                <li>Vendor data research - Onboard and integrate Bloomberg Sanctions, Corporate Actions, Premarket T&C and Pricing, PTP restriction list</li>
+                                <li>Architect best practices with integrating data flows with DataBricks, Git, Python notebooks, and Python services</li>
+                                <li>Created hiring and onboarding process for team and hired multiple excellent additions</li>
+                            </ul>
+                            <p class="tech-stack"><strong>Technology:</strong> Python 3.11, SQL Server, Databricks</p>
+                        </div>
                     </div>
-                    <p class="company">Centiva Capital, New York, NY</p>
-                    <ul class="job-responsibilities">
-                        <li>Design and develop firm's new security master</li>
-                        <li>Design and support critical services including authorization service, new instrument creation service, and their corresponding GUIs</li>
-                        <li>Support existing post-trade systems - reconciliations, security mapping</li>
-                        <li>Vendor data research - Onboard and integrate Bloomberg Sanctions, Corporate Actions, Premarket T&C and Pricing, PTP restriction list</li>
-                        <li>Architect best practices with integrating data flows with DataBricks, Git, Python notebooks, and Python services</li>
-                        <li>Created hiring and onboarding process for team and hired multiple excellent additions</li>
-                    </ul>
-                    <p class="tech-stack"><strong>Technology:</strong> Python 3.11, SQL Server, Databricks</p>
-                </div>
 
-                <div class="job">
-                    <div class="job-header">
-                        <h3>Software Engineering Lead – Portfolio Management / Security Master</h3>
-                        <span class="job-period">Jul 2018 – Nov 2022</span>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-date">Jul 2018 - Nov 2022</div>
+                            <h3>Schonfeld</h3>
+                            <p class="timeline-role">Software Engineering Lead</p>
+                            <p class="timeline-highlight">6M+ txns/day · Led team of 8</p>
+                        </div>
+                        <div class="timeline-details">
+                            <h4>Schonfeld, New York, NY</h4>
+                            <ul>
+                                <li>Led a team of 8 developers, delivering an in-house Portfolio Management System processing 6M+ transactions/day with sub-second latency</li>
+                                <li>Developed internal security master data validation and delivery pipelines</li>
+                                <li>Integrated with multiple security master data vendors - Arcesium, Bloomberg, Gics, Markit, Refinitiv</li>
+                                <li>Designed and implemented a scalable software architecture framework built on top of Apache Kafka</li>
+                                <li>Spearheaded Agile development practices, enhancing team productivity and project delivery</li>
+                                <li>Mentored team members, fostering professional growth and skill development</li>
+                            </ul>
+                            <p class="tech-stack"><strong>Technology:</strong> Kotlin, Java 8/11, Kafka, ActiveMQ, MySQL, Redis, kdb+</p>
+                        </div>
                     </div>
-                    <p class="company">Schonfeld, New York, NY</p>
-                    <ul class="job-responsibilities">
-                        <li>Led a team of 8 developers, delivering an in-house Portfolio Management System processing 6M+ transactions/day with sub-second latency</li>
-                        <li>Developed internal security master data validation and delivery pipelines</li>
-                        <li>Integrated with multiple security master data vendors - Arcesium, Bloomberg, Gics, Markit, Refinitiv</li>
-                        <li>Designed and implemented a scalable software architecture framework built on top of Apache Kafka</li>
-                        <li>Spearheaded Agile development practices, enhancing team productivity and project delivery</li>
-                        <li>Mentored team members, fostering professional growth and skill development</li>
-                    </ul>
-                    <p class="tech-stack"><strong>Technology:</strong> Kotlin, Java 8/11, Kafka, ActiveMQ, MySQL, Redis, kdb+</p>
-                </div>
 
-                <div class="job">
-                    <div class="job-header">
-                        <h3>Senior Software Developer – Middle Office</h3>
-                        <span class="job-period">Jan 2017 – Jul 2018</span>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-date">Jan 2017 - Jul 2018</div>
+                            <h3>Millennium</h3>
+                            <p class="timeline-role">Senior Software Developer</p>
+                            <p class="timeline-highlight">Middle Office Systems</p>
+                        </div>
+                        <div class="timeline-details">
+                            <h4>Millennium Partners, New York, NY</h4>
+                            <ul>
+                                <li>Developed and optimized invoicing, expense, and document management systems</li>
+                                <li>Consolidated T+1 PMS source system PnL reporting figures, enhancing data accuracy</li>
+                                <li>Implemented a Kafka & Python POC, accelerating data delivery for business critical T-0 PnL</li>
+                                <li>Reduced redundant Murex trade data by 88% through SQL Server optimization</li>
+                            </ul>
+                            <p class="tech-stack"><strong>Technology:</strong> C# 7, .Net 4.0, Solr, SQL Server, Python, Kafka, RabbitMQ</p>
+                        </div>
                     </div>
-                    <p class="company">Millennium Partners, New York, NY</p>
-                    <ul class="job-responsibilities">
-                        <li>Developed and optimized invoicing, expense, and document management systems</li>
-                        <li>Consolidated T+1 PMS source system PnL reporting figures, enhancing data accuracy</li>
-                        <li>Implemented a Kafka & Python POC, accelerating data delivery for business critical T-0 PnL</li>
-                        <li>Reduced redundant Murex trade data by 88% through SQL Server optimization</li>
-                    </ul>
-                    <p class="tech-stack"><strong>Technology:</strong> C# 7, .Net 4.0, Solr, SQL Server, Python, Kafka, RabbitMQ</p>
-                </div>
 
-                <div class="job">
-                    <div class="job-header">
-                        <h3>Senior Software Developer – Big Data Platform</h3>
-                        <span class="job-period">Mar 2015 – May 2016</span>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-date">Mar 2015 - May 2016</div>
+                            <h3>Bloomberg L.P.</h3>
+                            <p class="timeline-role">Senior Software Developer</p>
+                            <p class="timeline-highlight">Big Data Platform</p>
+                        </div>
+                        <div class="timeline-details">
+                            <h4>Bloomberg L.P., New York, NY</h4>
+                            <ul>
+                                <li>Developed RESTful services for file storage and retrieval, enhancing data accessibility</li>
+                                <li>Implemented server-side APIs using Apache, mod-wsgi, and Flask for user self storage of data schemas</li>
+                                <li>Architected and implemented Big Data solutions using Hadoop HDFS and Solr - handling hundreds of millions of messages per day</li>
+                                <li>Engineered schema-driven extraction and search services, improving data discoverability</li>
+                            </ul>
+                            <p class="tech-stack"><strong>Technology:</strong> Java, Apache Hadoop, Yarn, HBase, Solr, Python, Flask</p>
+                        </div>
                     </div>
-                    <p class="company">Bloomberg L.P., New York, NY</p>
-                    <ul class="job-responsibilities">
-                        <li>Developed RESTful services for file storage and retrieval, enhancing data accessibility</li>
-                        <li>Implemented server-side APIs using Apache, mod-wsgi, and Flask for user self storage of data schemas</li>
-                        <li>Architected and implemented Big Data solutions using Hadoop HDFS and Solr - handling hundreds of millions of messages per day</li>
-                        <li>Engineered schema-driven extraction and search services, improving data discoverability</li>
-                    </ul>
-                    <p class="tech-stack"><strong>Technology:</strong> Java, Apache Hadoop, Yarn, HBase, Solr, Python, Flask</p>
-                </div>
 
-                <div class="job">
-                    <div class="job-header">
-                        <h3>Senior Software Developer – MBS Structuring & Analytics</h3>
-                        <span class="job-period">Mar 2011 – Mar 2015</span>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-date">Mar 2011 - Mar 2015</div>
+                            <h3>Bloomberg L.P.</h3>
+                            <p class="timeline-role">Senior Software Developer</p>
+                            <p class="timeline-highlight">MBS Structuring & Analytics</p>
+                        </div>
+                        <div class="timeline-details">
+                            <h4>Bloomberg L.P., New York, NY</h4>
+                            <ul>
+                                <li>Devised a new domain-heavy GUI application utilizing .NET, WPF, and C# to structure MBS</li>
+                                <li>Developed distributed server-side services using Python and C++ using proprietary Bloomberg protocols</li>
+                                <li>Authored WPF custom controls, reusable .NET utilities, and metadata-driven domain models</li>
+                                <li>Invented a novel, high-efficiency solution for concurrency control, improving throughput and reliability</li>
+                                <li>Learned the Mortgage domain to become an expert in RMBS and CMBS structuring</li>
+                            </ul>
+                            <p class="tech-stack"><strong>Technology:</strong> C#, WPF, .NET 3.5 & 4.0, C++, Dev Express, Json.NET</p>
+                        </div>
                     </div>
-                    <p class="company">Bloomberg L.P., New York, NY</p>
-                    <ul class="job-responsibilities">
-                        <li>Devised a new domain-heavy GUI application utilizing .NET, WPF, and C# to structure MBS</li>
-                        <li>Developed distributed server-side services using Python and C++ using proprietary Bloomberg protocols</li>
-                        <li>Authored WPF custom controls, reusable .NET utilities, and metadata-driven domain models</li>
-                        <li>Invented a novel, high-efficiency solution for concurrency control, improving throughput and reliability</li>
-                        <li>Learned the Mortgage domain to become an expert in RMBS and CMBS structuring</li>
-                    </ul>
-                    <p class="tech-stack"><strong>Technology:</strong> C#, WPF, .NET 3.5 & 4.0, C++, Dev Express, Json.NET</p>
-                </div>
 
-                <div class="job">
-                    <div class="job-header">
-                        <h3>Software Engineer – Director</h3>
-                        <span class="job-period">Sep 2010 – Mar 2011</span>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-date">Sep 2010 - Mar 2011</div>
+                            <h3>Trading Machines</h3>
+                            <p class="timeline-role">Software Engineer</p>
+                            <p class="timeline-highlight">Trading Platform</p>
+                        </div>
+                        <div class="timeline-details">
+                            <h4>Trading Machines, LLC, Stamford, CT</h4>
+                            <ul>
+                                <li>Led front-end GUI development in Windows Forms for .NET 3.5 framework, responsible for 90+ forms</li>
+                                <li>Ensured Multicast traffic consistency and accurate publishing in LBM 4.1 in Linux and Windows</li>
+                                <li>Built proprietary libraries using C++, Perl, and Bash for handling back-office functions</li>
+                                <li>Coordinated market data feeds from Opra, CTA, UTP, and Direct Exchange Connectivity</li>
+                            </ul>
+                            <p class="tech-stack"><strong>Technology:</strong> C#, Windows Forms 3.5, MySQL, C++, Perl, Bash, FIX Protocol</p>
+                        </div>
                     </div>
-                    <p class="company">Trading Machines, LLC, Stamford, CT</p>
-                    <ul class="job-responsibilities">
-                        <li>Led front-end GUI development in Windows Forms for .NET 3.5 framework, responsible for 90+ forms</li>
-                        <li>Ensured Multicast traffic consistency and accurate publishing in LBM 4.1 in Linux and Windows</li>
-                        <li>Built proprietary libraries using C++, Perl, and Bash for handling back-office functions</li>
-                        <li>Coordinated market data feeds from Opra, CTA, UTP, and Direct Exchange Connectivity</li>
-                    </ul>
-                    <p class="tech-stack"><strong>Technology:</strong> C#, Windows Forms 3.5, MySQL, C++, Perl, Bash, FIX Protocol</p>
                 </div>
             </div>
         </section>
-
         <section id="education" class="education">
             <div class="container">
                 <h2>Education</h2>
@@ -300,17 +394,6 @@
             </div>
         </section>
 
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2>Get In Touch</h2>
-                <p>Interested in collaborating or discussing opportunities? Let's connect.</p>
-                <div class="contact-links">
-                    <a href="https://github.com/valpetrov" target="_blank">GitHub</a>
-                    <a href="https://linkedin.com/in/valpetrov" target="_blank">LinkedIn</a>
-                    <a href="mailto:val@example.com">Email</a>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer>
@@ -357,6 +440,35 @@
         function showMainContent() {
             recaptchaScreen.style.display = 'none';
             mainContent.style.display = 'block';
+
+            // Initialize timeline carousel after content is shown
+            initializeTimeline();
+        }
+
+        // Timeline carousel functionality
+        function initializeTimeline() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+
+            // Set first item as active by default
+            if (timelineItems.length > 0) {
+                timelineItems[0].classList.add('active');
+            }
+
+            // Add click handlers to timeline cards
+            timelineItems.forEach((item, index) => {
+                const card = item.querySelector('.timeline-card');
+
+                card.addEventListener('click', function() {
+                    // Remove active class from all items
+                    timelineItems.forEach(i => i.classList.remove('active'));
+
+                    // Add active class to clicked item
+                    item.classList.add('active');
+
+                    // Smooth scroll to show the active item
+                    item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                });
+            });
         }
     </script>
 </body>

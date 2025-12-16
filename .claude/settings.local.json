@@ -3,7 +3,29 @@
     "allow": [
       "Bash(git init:*)",
       "Bash(curl:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "mcp__browsermcp__browser_navigate",
+      "mcp__browsermcp__browser_screenshot",
+      "mcp__browsermcp__browser_click",
+      "mcp__browsermcp__browser_snapshot",
+      "mcp__browsermcp__browser_press_key",
+      "mcp__browsermcp__browser_wait",
+      "Bash(git commit -m \"$(cat <<''EOF''\nUpdate personal resume website with comprehensive professional profile\n\nAdd complete work experience from CV including Point72 (current), Centiva, Schonfeld, Millennium, and Bloomberg positions. Add technical skills sections for AI (Cursor, Claude Code, Gemini, RAG, Agentic Development) and Service Oriented Architecture (gRPC, REST, Web Services). Highlight AI hackathon leadership for Agentic Job Description project. Include activities section with cycling, tennis, AI development, and real estate investment interests. Replace password authentication with reCAPTCHA for better security. Update timeline to reflect current employment at Point72 (Apr 2025-Present) and previous role at Centiva (Nov 2022-Jan 2025).\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(lsof -ti:8000)",
+      "Bash(xargs kill -9)",
+      "Bash(python3 -m http.server 8000)",
+      "WebSearch",
+      "WebFetch(domain:brittanychiang.com)",
+      "WebFetch(domain:cgroom.medium.com)",
+      "WebFetch(domain:scottmax.com)",
+      "mcp__browsermcp__browser_get_console_logs",
+      "Bash(/tmp/before_timeline.html)",
+      "Bash(/tmp/after_timeline.html)",
+      "Bash(/tmp/timeline_section.html)",
+      "Bash(/tmp/old_experience.html)",
+      "Bash(/tmp/rest.html)",
+      "Bash(cat /tmp/final_part1.html /tmp/skills_section.html /tmp/timeline_section.html /tmp/rest.html)",
+      "Bash(/Users/val/work/claude-test/index.html)"
     ],
     "deny": []
   }
