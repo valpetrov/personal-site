@@ -25,7 +25,10 @@
       "Bash(/tmp/old_experience.html)",
       "Bash(/tmp/rest.html)",
       "Bash(cat /tmp/final_part1.html /tmp/skills_section.html /tmp/timeline_section.html /tmp/rest.html)",
-      "Bash(/Users/val/work/claude-test/index.html)"
+      "Bash(/Users/val/work/claude-test/index.html)",
+      "Bash(git push origin main)",
+      "Bash(gh auth status)",
+      "Bash(gh auth setup-git)"
     ],
     "deny": []
   }
