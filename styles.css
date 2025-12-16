@@ -24,6 +24,12 @@ html {
     overflow-y: scroll;
 }
 
+.invisible {
+    display: none
+    position: absolute;
+    top: -9999px;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     background-image: url('https://wallpapercave.com/wp/wp2555218.jpg');
