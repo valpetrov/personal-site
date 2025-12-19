@@ -1336,6 +1336,7 @@ footer p {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 2rem;
 }
 
 .image-frame {
@@ -1494,11 +1495,20 @@ footer p {
 
     .hero-image-wrapper {
         order: -1;
+        padding: 1.5rem;
     }
 
     .headshot-container {
         width: 16rem;
         height: 20rem;
+    }
+
+    .frame-border-outer {
+        inset: -1.5rem;
+    }
+
+    .frame-border-inner {
+        inset: -0.75rem;
     }
 
     .hero-heading h1 {
@@ -1511,6 +1521,23 @@ footer p {
 }
 
 @media (max-width: 768px) {
+    .hero-image-wrapper {
+        padding: 1rem;
+    }
+
+    .headshot-container {
+        width: 14rem;
+        height: 17.5rem;
+    }
+
+    .frame-border-outer {
+        inset: -1rem;
+    }
+
+    .frame-border-inner {
+        inset: -0.5rem;
+    }
+
     .hero-heading h1 {
         font-size: 2.5rem;
     }
