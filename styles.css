@@ -22,6 +22,7 @@ html {
     scroll-behavior: smooth;
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
+    scroll-padding-top: 100px;
 }
 
 .invisible {
@@ -195,13 +196,14 @@ body::before {
 
 /* Hero Section */
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
     overflow: visible;
+    padding-top: 120px;
 }
 
 .hero-content h1 {
@@ -320,9 +322,7 @@ section:nth-child(odd) {
 
 /* Ensure hero section takes full height */
 .hero {
-    height: 100vh;
     min-height: 100vh;
-    padding: 0;
 }
 
 h2 {
@@ -832,16 +832,18 @@ footer p {
     }
 
     .navbar {
-        position: absolute;
+        position: fixed;
         top: 0;
+        left: 0;
         right: 0;
-        background: none;
+        background-color: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(10px);
         z-index: 1000;
     }
 
     .nav-container {
         padding: 1rem;
-        justify-content: flex-end;
+        justify-content: space-between;
     }
 
     .hamburger {
@@ -854,10 +856,6 @@ footer p {
     .hamburger-line {
         background-color: #fff;
         box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
-    }
-
-    .nav-logo {
-        display: none;
     }
 
     .nav-menu {
@@ -1538,8 +1536,8 @@ footer p {
 .headshot-modern {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    object-position: center center;
+    object-fit: cover;
+    object-position: center 35%;
     transition: all 0.7s ease;
 }
 
