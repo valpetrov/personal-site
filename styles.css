@@ -169,6 +169,7 @@ body::before {
     justify-content: center;
     text-align: center;
     background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    overflow: visible;
 }
 
 .hero-content h1 {
@@ -858,6 +859,10 @@ footer p {
     .container {
         padding: 0 1rem;
     }
+
+    .hero .container {
+        padding: 0 2rem;
+    }
     
     
     h2 {
@@ -915,6 +920,27 @@ footer p {
 @media (max-width: 480px) {
     .nav-menu {
         display: none;
+    }
+
+    .hero .container {
+        padding: 0 1.5rem;
+    }
+
+    .hero-image-wrapper {
+        padding: 0.5rem;
+    }
+
+    .headshot-container {
+        width: 12rem;
+        height: 15rem;
+    }
+
+    .frame-border-outer {
+        inset: -0.5rem;
+    }
+
+    .frame-border-inner {
+        inset: -0.25rem;
     }
 
     .hero-content h1 {
@@ -1180,6 +1206,7 @@ footer p {
     gap: 4rem;
     align-items: center;
     margin-bottom: 4rem;
+    overflow: visible;
 }
 
 .hero-content-wrapper {
