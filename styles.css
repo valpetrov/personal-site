@@ -161,6 +161,38 @@ body::before {
     color: var(--accent);
 }
 
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.hamburger-line {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-primary);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
 /* Hero Section */
 .hero {
     height: 100vh;
@@ -794,23 +826,69 @@ footer p {
         padding: 2rem;
         margin: 1rem;
     }
-    
+
     .password-box h2 {
         font-size: 1.5rem;
     }
-    
+
+    .navbar {
+        background-color: transparent;
+        border-bottom: none;
+    }
+
     .nav-container {
         padding: 1rem;
     }
-    
-    .nav-menu {
-        gap: 1rem;
+
+    .hamburger {
+        display: flex;
+        background-color: rgba(10, 10, 10, 0.8);
+        border-radius: 8px;
+        padding: 0.6rem;
+        backdrop-filter: blur(10px);
     }
-    
+
+    .nav-logo {
+        background-color: rgba(10, 10, 10, 0.8);
+        border-radius: 8px;
+        padding: 0.3rem;
+        backdrop-filter: blur(10px);
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 250px;
+        flex-direction: column;
+        background-color: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 5rem 2rem 2rem;
+        gap: 2rem;
+        transition: right 0.3s ease;
+        border-left: 1px solid var(--border);
+        z-index: 999;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-menu li {
+        width: 100%;
+    }
+
+    .nav-menu a {
+        display: block;
+        padding: 0.75rem 0;
+        font-size: 1.1rem;
+    }
+
     .logo-box {
         padding: 0.4rem 0.6rem;
     }
-    
+
     .logo-initials {
         font-size: 1rem;
     }
@@ -918,10 +996,6 @@ footer p {
 }
 
 @media (max-width: 480px) {
-    .nav-menu {
-        display: none;
-    }
-
     .hero .container {
         padding: 0 1.5rem;
     }
