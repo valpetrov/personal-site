@@ -8,7 +8,7 @@
     <title>Val Petrov - Software Engineer & Engineering Manager</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LeiykksAAAAAHmd9e-M99xEOLU8X8bM33LNoFC6"></script>
 </head>
 <body>
     <!-- reCAPTCHA Protection Screen -->
@@ -18,8 +18,7 @@
                 <h2>Human Verification Required</h2>
                 <p>Please verify you're human to view this site</p>
                 <form id="recaptcha-form">
-                    <div class="g-recaptcha" data-sitekey="6LeiykksAAAAAHmd9e-M99xEOLU8X8bM33LNoFC6" data-callback="onRecaptchaSuccess"></div>
-                    <button type="submit" id="verify-button" disabled>Enter Site</button>
+                    <button type="submit" id="verify-button">Enter Site</button>
                 </form>
                 <div id="error-message" class="error-message" style="display: none;">Please complete the reCAPTCHA verification.</div>
             </div>
@@ -421,25 +420,38 @@
             showMainContent();
         }
 
-        // Callback when reCAPTCHA is successfully completed
-        function onRecaptchaSuccess(token) {
+        // Wait for reCAPTCHA to be ready
+        grecaptcha.ready(function() {
             verifyButton.disabled = false;
-            errorMessage.style.display = 'none';
-        }
+        });
 
         recaptchaForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            const recaptchaResponse = grecaptcha.getResponse();
+            verifyButton.disabled = true;
+            verifyButton.textContent = 'Verifying...';
 
-            if (recaptchaResponse.length === 0) {
-                errorMessage.style.display = 'block';
-                return;
-            }
-
-            // For a production site, you would verify the token on the server
-            // For this demo, we'll just check that the captcha was completed
-            sessionStorage.setItem('authenticated', 'true');
-            showMainContent();
+            // Execute reCAPTCHA v3
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6LeiykksAAAAAHmd9e-M99xEOLU8X8bM33LNoFC6', {action: 'submit'}).then(function(token) {
+                    // For a production site, you would verify the token on the server
+                    // The server would check the score and validate the token
+                    // For this demo, we'll just check that we got a token
+                    if (token) {
+                        sessionStorage.setItem('authenticated', 'true');
+                        showMainContent();
+                    } else {
+                        errorMessage.textContent = 'Verification failed. Please try again.';
+                        errorMessage.style.display = 'block';
+                        verifyButton.disabled = false;
+                        verifyButton.textContent = 'Enter Site';
+                    }
+                }).catch(function(error) {
+                    errorMessage.textContent = 'Verification failed. Please try again.';
+                    errorMessage.style.display = 'block';
+                    verifyButton.disabled = false;
+                    verifyButton.textContent = 'Enter Site';
+                });
+            });
         });
 
         function showMainContent() {
