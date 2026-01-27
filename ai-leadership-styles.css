@@ -230,8 +230,26 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .ai-leadership-section {
+        padding: 3rem 0;
+    }
+    
+    .section-header {
+        margin-bottom: 2rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+    }
+    
     .ai-leadership-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .ai-card {
+        padding: 1.5rem;
     }
     
     .ai-card.featured,
@@ -239,8 +257,30 @@
         grid-column: span 1;
     }
     
+    .ai-card-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 1rem;
+    }
+    
+    .ai-card h3 {
+        font-size: 1.25rem;
+    }
+    
     .leadership-metrics {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+    }
+    
+    .metric {
+        padding: 0.75rem 0.5rem;
+    }
+    
+    .metric-number {
+        font-size: 1.5rem;
+    }
+    
+    .metric-label {
+        font-size: 0.75rem;
     }
 }
