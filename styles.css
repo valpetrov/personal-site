@@ -20,7 +20,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: y proximity;
     overflow-y: scroll;
     scroll-padding-top: 100px;
 }
@@ -306,7 +306,6 @@ section {
     flex-direction: column;
     justify-content: center;
     scroll-snap-align: start;
-    scroll-snap-stop: always;
     padding: 4rem 0;
     box-sizing: border-box;
     position: relative;
