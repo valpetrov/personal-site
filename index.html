@@ -816,6 +816,103 @@
             fill: var(--accent);
         }
 
+        /* ===== RESUME CTA ===== */
+        .resume-section {
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border);
+            padding: 4.5rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .resume-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 100%;
+            background:
+                radial-gradient(ellipse 50% 60% at 50% 0%, var(--accent-glow), transparent);
+            pointer-events: none;
+        }
+        .resume-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .resume-section .section-label {
+            justify-content: center;
+        }
+        .resume-section .section-label::after {
+            content: '';
+            width: 24px;
+            height: 1px;
+            background: var(--accent);
+        }
+        .resume-title {
+            font-family: var(--serif);
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
+        .resume-title em {
+            font-style: italic;
+            color: var(--accent);
+        }
+        .resume-sub {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            line-height: 1.65;
+        }
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding: 1rem 2.25rem;
+            background: var(--accent);
+            color: var(--bg-primary);
+            font-family: var(--sans);
+            font-weight: 600;
+            font-size: 0.88rem;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.02em;
+            box-shadow: 0 8px 24px rgba(201, 168, 76, 0.18);
+        }
+        .btn-download:hover {
+            background: #d4b35a;
+            transform: translateY(-2px);
+            box-shadow: 0 14px 38px rgba(201, 168, 76, 0.32);
+        }
+        .btn-download svg {
+            width: 18px;
+            height: 18px;
+        }
+        .resume-meta {
+            margin-top: 1.25rem;
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+        }
+        .resume-meta .sep {
+            width: 4px; height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
         /* ===== FOOTER ===== */
         footer {
             padding: 2rem 3rem;
@@ -940,6 +1037,7 @@
         <a href="#education">Education</a>
         <a href="#activities">Life</a>
         <a href="#contact">Contact</a>
+        <a href="val-petrov-resume.pdf" download="Val-Petrov-Resume.pdf">Resume</a>
     </div>
 </nav>
 
@@ -1355,6 +1453,29 @@
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                 LinkedIn
             </a>
+        </div>
+    </div>
+</section>
+
+<!-- RESUME DOWNLOAD -->
+<section class="resume-section">
+    <div class="resume-container reveal">
+        <div class="section-label">Resume</div>
+        <h2 class="resume-title">Take it with <em>you.</em></h2>
+        <p class="resume-sub">
+            Download a polished, one-page summary of my experience, expertise, and the
+            systems I've shipped — formatted for hiring managers and recruiters.
+        </p>
+        <a href="val-petrov-resume.pdf" download="Val-Petrov-Resume.pdf" class="btn-download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Resume
+        </a>
+        <div class="resume-meta">
+            <span>PDF</span>
+            <span class="sep"></span>
+            <span>Letter · 1 Page</span>
+            <span class="sep"></span>
+            <span>Updated 2026</span>
         </div>
     </div>
 </section>
