@@ -894,6 +894,38 @@
             width: 18px;
             height: 18px;
         }
+        .btn-download-alt {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding: 1rem 2.25rem;
+            background: transparent;
+            color: var(--text-primary);
+            font-family: var(--sans);
+            font-weight: 600;
+            font-size: 0.88rem;
+            text-decoration: none;
+            border-radius: 8px;
+            border: 1px solid var(--border-accent);
+            transition: all 0.3s ease;
+            letter-spacing: 0.02em;
+        }
+        .btn-download-alt:hover {
+            border-color: var(--accent);
+            background: var(--bg-card);
+            transform: translateY(-2px);
+            box-shadow: 0 14px 38px rgba(0, 0, 0, 0.28);
+        }
+        .btn-download-alt svg {
+            width: 18px;
+            height: 18px;
+        }
+        .resume-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
         .resume-meta {
             margin-top: 1.25rem;
             font-family: var(--mono);
@@ -1463,13 +1495,21 @@
         <div class="section-label">Resume</div>
         <h2 class="resume-title">Take it with <em>you.</em></h2>
         <p class="resume-sub">
-            Download a polished, one-page summary of my experience, expertise, and the
-            systems I've shipped — formatted for hiring managers and recruiters.
+            Two polished, one-page editions — pick the one that fits. The
+            <strong>Agentic</strong> resume leads with AI agents and LLM-powered
+            workflows; the <strong>Software Engineering</strong> resume is a classic,
+            distributed-systems take for traditional roles.
         </p>
-        <a href="val-petrov-resume.pdf" download="Val-Petrov-Resume.pdf" class="btn-download">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Download Resume
-        </a>
+        <div class="resume-actions">
+            <a href="val-petrov-resume.pdf" download="Val-Petrov-Resume.pdf" class="btn-download">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Agentic Resume
+            </a>
+            <a href="val-petrov-traditional-resume.pdf" download="Val-Petrov-Software-Engineer-Resume.pdf" class="btn-download-alt">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Software Engineering Resume
+            </a>
+        </div>
         <div class="resume-meta">
             <span>PDF</span>
             <span class="sep"></span>
