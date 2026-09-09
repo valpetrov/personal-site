@@ -13,8 +13,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
-<script src="https://www.google.com/recaptcha/enterprise.js?render=6LeiykksAAAAAHmd9e-M99xEOLU8X8bM33LNoFC6"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Newsreader:ital,opsz,wght@1,6..72,400&amp;display=swap" rel="stylesheet">
 <style>
 html{scroll-behavior:smooth}
 body{margin:0;background:#0A0C10;color:#E9ECF2;font-family:'Space Grotesk',ui-sans-serif,sans-serif;-webkit-font-smoothing:antialiased;--accent:#5CE39C;--photo-filter:grayscale(1) contrast(1.06)}
@@ -23,9 +22,11 @@ a:hover{color:var(--accent)}
 a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:4px}
 body [style*="color:#5A6274"]{color:#7B8398 !important}
 ::selection{background:var(--accent);color:#0A0C10}
-@keyframes vp-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes vp-blink{0%,100%{opacity:1}50%{opacity:.25}}
 @keyframes vp-fadeup{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes vp-grid-drift{from{background-position:0 0}to{background-position:64px 64px}}
+@keyframes vp-orbit{from{transform:rotate(12deg)}to{transform:rotate(372deg)}}
+@keyframes vp-orbit-reverse{from{transform:rotate(-18deg)}to{transform:rotate(-378deg)}}
+@keyframes vp-glow{0%,100%{opacity:.42;transform:translate3d(0,0,0) scale(1)}50%{opacity:.7;transform:translate3d(-4%,3%,0) scale(1.08)}}
 
 /* interactive states (ported from the design's style-hover attributes) */
 .vp-skip-link{position:fixed;top:12px;left:12px;z-index:10001;transform:translateY(-180%);padding:12px 16px;border-radius:8px;background:var(--accent);color:#0A0C10;font-weight:600}
@@ -38,22 +39,29 @@ body [style*="color:#5A6274"]{color:#7B8398 !important}
 .vp-resume-link{display:inline-flex;min-height:44px;align-items:center}
 .vp-btn-accent:hover{filter:brightness(1.12);color:#0A0C10}
 .vp-life-img:hover{transform:scale(1.03)}
-.vp-marquee-track:hover{animation-play-state:paused}
+.vp-hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(92,227,156,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(92,227,156,.06) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(circle at 74% 46%,black 0,rgba(0,0,0,.72) 32%,transparent 72%);animation:vp-grid-drift 18s linear infinite;pointer-events:none}
+.vp-hero::after{content:"";position:absolute;width:min(760px,68vw);aspect-ratio:1;right:-13%;top:6%;border-radius:50%;background:radial-gradient(circle,rgba(92,227,156,.18) 0,rgba(92,227,156,.075) 28%,transparent 68%);filter:blur(6px);animation:vp-glow 9s ease-in-out infinite;pointer-events:none}
+.vp-hero-copy{z-index:2}
+.vp-hero-art{position:absolute;z-index:1;right:clamp(-170px,-7vw,-72px);top:50%;width:min(49vw,700px);aspect-ratio:1;transform:translateY(-50%);pointer-events:none;animation:vp-fadeup 1.1s .15s ease both}
+.vp-monogram{position:absolute;inset:0;display:grid;place-items:center;color:transparent;-webkit-text-stroke:1px rgba(92,227,156,.28);font-size:clamp(230px,31vw,500px);font-weight:700;line-height:.75;letter-spacing:-.16em;text-indent:-.16em;opacity:.72}
+.vp-orbit{position:absolute;inset:4%;border:1px solid rgba(92,227,156,.2);border-radius:50%;animation:vp-orbit 24s linear infinite}
+.vp-orbit::before{content:"";position:absolute;width:9px;height:9px;top:13%;left:13%;border-radius:50%;background:var(--accent);box-shadow:0 0 0 8px rgba(92,227,156,.08),0 0 32px rgba(92,227,156,.8)}
+.vp-orbit--inner{inset:19%;border-color:rgba(233,236,242,.14);animation:vp-orbit-reverse 17s linear infinite}
+.vp-orbit--inner::before{width:5px;height:5px;top:auto;left:auto;right:3%;bottom:33%;background:#E9ECF2;box-shadow:0 0 0 7px rgba(233,236,242,.05),0 0 22px rgba(233,236,242,.5)}
+.vp-hero-accent{font-family:'Newsreader',serif;font-style:italic;font-weight:400;color:var(--accent);letter-spacing:-.01em}
+.vp-section-label{display:flex;align-items:center;gap:14px;width:min(360px,100%)}
+.vp-section-label::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,rgba(92,227,156,.7),rgba(92,227,156,0))}
+.vp-career-row{transition:background-color .25s ease,box-shadow .25s ease}
+.vp-career-row:hover{background:linear-gradient(90deg,rgba(92,227,156,.045),transparent 72%);box-shadow:-18px 0 0 rgba(92,227,156,.045),18px 0 0 rgba(92,227,156,0)}
+.vp-work-card{position:relative;overflow:hidden;transition:transform .28s cubic-bezier(.2,.7,.2,1),background-color .28s ease,box-shadow .28s ease}
+.vp-work-card::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.vp-work-card:hover{transform:translateY(-7px);background:#10151D !important;box-shadow:0 22px 55px rgba(0,0,0,.28)}
+.vp-work-card:hover::before{transform:scaleX(1)}
+.vp-about-photo>div:first-child,.vp-life-grid figure>div{transition:border-color .3s ease,box-shadow .3s ease}
+.vp-about-photo:hover>div:first-child,.vp-life-grid figure:hover>div{border-color:rgba(92,227,156,.42) !important;box-shadow:0 20px 55px rgba(0,0,0,.3),0 0 0 1px rgba(92,227,156,.06)}
 
 /* scroll-reveal */
 [data-reveal].vp-hidden{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1)}
-
-/* ===== reCAPTCHA gate ===== */
-#recaptcha-screen{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;background:#0A0C10;padding:24px;box-sizing:border-box}
-.vp-gate-box{max-width:440px;width:100%;text-align:center;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:44px 34px;background:#0C0F15}
-.vp-gate-badge{display:inline-flex;align-items:center;gap:9px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.14em;color:#99A1B3;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:7px 14px;margin-bottom:26px}
-.vp-gate-badge span{width:7px;height:7px;border-radius:50%;background:var(--accent)}
-.vp-gate-box h2{margin:0;font-size:26px;font-weight:600;letter-spacing:-.02em}
-.vp-gate-box p{margin:14px 0 28px;color:#99A1B3;font-weight:300;font-size:15px;line-height:1.55}
-#verify-button{width:100%;background:var(--accent);color:#0A0C10;border:none;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;padding:14px 24px;border-radius:999px;cursor:pointer;transition:filter .2s ease}
-#verify-button:hover:not(:disabled){filter:brightness(1.12)}
-#verify-button:disabled{opacity:.5;cursor:not-allowed}
-.vp-gate-error{color:#ff6b6b;font-size:13px;margin-top:16px}
 
 /* ===== responsive (the export ships no breakpoints) ===== */
 @media (max-width:860px){
@@ -64,44 +72,29 @@ body [style*="color:#5A6274"]{color:#7B8398 !important}
   .vp-navlink{padding:0 14px}
   .vp-x{padding-left:22px !important;padding-right:22px !important}
   .vp-hero{padding-left:22px !important;padding-right:22px !important}
+  .vp-hero-art{right:-38%;width:92vw;opacity:.46}
+  .vp-hero::before{mask-image:radial-gradient(circle at 78% 46%,black 0,rgba(0,0,0,.58) 32%,transparent 75%)}
+  .vp-hero::after{right:-42%;width:105vw;opacity:.55}
+  .vp-monogram{font-size:clamp(220px,72vw,360px)}
   .vp-hero-now{display:none !important}
   .vp-about-grid{grid-template-columns:1fr !important;gap:46px !important}
   .vp-about-photo{position:static !important;top:auto !important}
-  .vp-stats{grid-template-columns:repeat(2,1fr) !important}
   .vp-life-grid{grid-template-columns:1fr !important}
   .vp-career-row{grid-template-columns:1fr !important;gap:10px 0 !important}
   .vp-career-rail{display:none !important}
   .vp-career-date{padding-top:0 !important}
   .vp-footer{padding-left:22px !important;padding-right:22px !important}
 }
-@media (max-width:460px){
-  .vp-stats{grid-template-columns:1fr !important}
-}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
-  .vp-marquee-track{animation:none !important;transform:none !important}
   [data-reveal].vp-hidden{opacity:1;transform:none}
 }
 </style>
 </head>
 <body>
 
-<!-- reCAPTCHA Protection Screen -->
-<div id="recaptcha-screen">
-  <div class="vp-gate-box">
-    <div class="vp-gate-badge"><span></span> VAL PETROV — ENGINEERING LEADER</div>
-    <h2>Human verification</h2>
-    <p>Please verify you're human to view this site.</p>
-    <form id="recaptcha-form">
-      <button type="submit" id="verify-button">Enter site</button>
-    </form>
-    <div id="error-message" class="vp-gate-error" role="alert" aria-live="assertive" style="display:none">Please complete the reCAPTCHA verification.</div>
-  </div>
-</div>
-
-<!-- Main site content (hidden until verified) -->
-<main id="main-content" tabindex="-1" style="display:none">
+<main id="main-content" tabindex="-1">
 <a class="vp-skip-link" href="#content-start">Skip to content</a>
 
 <nav class="vp-nav" style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 40px;background:rgba(10,12,16,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)">
@@ -110,10 +103,10 @@ body [style*="color:#5A6274"]{color:#7B8398 !important}
     <button class="vp-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation menu">MENU</button>
     <div id="primary-navigation" class="vp-navlinks" style="display:flex;align-items:center;gap:28px">
       <a href="#about" class="vp-navlink">ABOUT</a>
-      <a href="#career" class="vp-navlink">CAREER</a>
+      <a href="#career" class="vp-navlink">EXPERIENCE</a>
       <a href="#work" class="vp-navlink">WORK</a>
-      <a href="#stack" class="vp-navlink">STACK</a>
-      <a href="#life" class="vp-navlink">LIFE</a>
+      <a href="#stack" class="vp-navlink">TOOLS</a>
+      <a href="#life" class="vp-navlink">OUTSIDE</a>
       <a href="#contact" class="vp-navlink">CONTACT</a>
     </div>
     <a href="val-petrov-resume.pdf" target="_blank" rel="noopener" class="vp-btn-accent vp-resume-link" style="color:#0A0C10;background:var(--accent);padding:8px 16px;border-radius:999px;font-weight:500">RESUME ↓</a>
@@ -121,73 +114,53 @@ body [style*="color:#5A6274"]{color:#7B8398 !important}
 </nav>
 
 <header id="top" class="vp-hero" style="position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding:120px 40px 80px;box-sizing:border-box">
-  <canvas id="hero-canvas" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas>
-  <div style="position:absolute;inset:0;background:radial-gradient(1100px 600px at 30% 45%, rgba(10,12,16,0) 0%, rgba(10,12,16,.55) 70%, #0A0C10 100%);pointer-events:none"></div>
-  <div style="position:relative;max-width:1180px;margin:0 auto;width:100%;pointer-events:none">
-    <div style="display:inline-flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.12em;color:#99A1B3;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:8px 16px;animation:vp-fadeup .8s ease both;pointer-events:auto">
-      <span style="width:7px;height:7px;border-radius:50%;background:var(--accent);animation:vp-blink 2.2s ease infinite"></span>
-      VAL PETROV — ENGINEERING LEADER · NEW YORK
-    </div>
-    <h1 style="margin:34px 0 0;font-size:clamp(44px, 6.4vw, 92px);line-height:1.02;font-weight:600;letter-spacing:-.03em;max-width:15ch;animation:vp-fadeup .9s .1s ease both">Engineering leader for reliable <em style="font-family:'Newsreader',serif;font-style:italic;font-weight:400;color:var(--accent);letter-spacing:0">AI</em> and high-scale financial systems.</h1>
-    <p style="margin:30px 0 0;font-size:clamp(17px,1.5vw,21px);line-height:1.55;color:#99A1B3;max-width:58ch;font-weight:300;animation:vp-fadeup 1s .2s ease both">16+ years leading teams and building distributed systems at Bloomberg, Millennium, Schonfeld, Centiva, and Point72. Now applying that production discipline to AI workflows that reason, act, and stay accountable.</p>
+  <div class="vp-hero-art" aria-hidden="true">
+    <span class="vp-monogram">VP</span>
+    <span class="vp-orbit"></span>
+    <span class="vp-orbit vp-orbit--inner"></span>
+  </div>
+  <div class="vp-hero-copy" style="position:relative;max-width:1180px;margin:0 auto;width:100%;pointer-events:none">
+    <h1 style="margin:0;font-size:clamp(44px, 6.4vw, 92px);line-height:1.02;font-weight:600;letter-spacing:-.03em;max-width:14ch;animation:vp-fadeup .9s .1s ease both">I lead engineering teams and build <span class="vp-hero-accent">financial systems.</span></h1>
+    <p style="margin:30px 0 0;font-size:clamp(17px,1.5vw,21px);line-height:1.55;color:#99A1B3;max-width:62ch;font-weight:300;animation:vp-fadeup 1s .2s ease both">Currently Tech Lead in Macro Technology at Point72. Previously built data and trading platforms at Centiva, Schonfeld, Millennium, and Bloomberg. I’m also exploring practical uses of LLMs in software delivery and operations.</p>
     <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:42px;animation:vp-fadeup 1s .3s ease both;pointer-events:auto">
       <a href="mailto:val.petrov@gmail.com" class="vp-btn-accent" style="background:var(--accent);color:#0A0C10;font-weight:600;font-size:16px;padding:15px 28px;border-radius:999px">Get in touch</a>
-      <a href="#work" style="border:1px solid rgba(255,255,255,.18);padding:14px 28px;border-radius:999px;font-size:16px">See selected work ↓</a>
+      <a href="#career" style="border:1px solid rgba(255,255,255,.18);padding:14px 28px;border-radius:999px;font-size:16px">View experience ↓</a>
       <a href="https://www.linkedin.com/in/valpetrov/" target="_blank" rel="noopener" style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#99A1B3;letter-spacing:.06em">LINKEDIN ↗</a>
     </div>
   </div>
   <div class="vp-hero-now" style="position:absolute;left:40px;bottom:26px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;color:#5A6274">NOW · TECH LEAD, MACRO TECHNOLOGY @ POINT72</div>
-  <div style="position:absolute;right:40px;bottom:26px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;color:#5A6274">SCROLL ↓</div>
 </header>
-
-<div style="border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);overflow:hidden;padding:16px 0;background:#0C0F15">
-  <div class="vp-marquee-track" style="display:flex;width:max-content;animation:vp-marquee 36s linear infinite">
-    <div class="vp-marquee-content" style="display:flex;gap:44px;padding-right:44px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.14em;color:#7B8398;white-space:nowrap">
-      <span>MULTI-AGENT ORCHESTRATION</span><span style="color:var(--accent)">✦</span><span>RAG PIPELINES</span><span style="color:var(--accent)">✦</span><span>TOOL-USING AGENTS</span><span style="color:var(--accent)">✦</span><span>KAFKA</span><span style="color:var(--accent)">✦</span><span>DISTRIBUTED SYSTEMS</span><span style="color:var(--accent)">✦</span><span>CLAUDE API</span><span style="color:var(--accent)">✦</span><span>VECTOR DATABASES</span><span style="color:var(--accent)">✦</span><span>REAL-TIME PIPELINES</span><span style="color:var(--accent)">✦</span>
-    </div>
-    <div class="vp-marquee-content" style="display:flex;gap:44px;padding-right:44px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.14em;color:#7B8398;white-space:nowrap" aria-hidden="true">
-      <span>MULTI-AGENT ORCHESTRATION</span><span style="color:var(--accent)">✦</span><span>RAG PIPELINES</span><span style="color:var(--accent)">✦</span><span>TOOL-USING AGENTS</span><span style="color:var(--accent)">✦</span><span>KAFKA</span><span style="color:var(--accent)">✦</span><span>DISTRIBUTED SYSTEMS</span><span style="color:var(--accent)">✦</span><span>CLAUDE API</span><span style="color:var(--accent)">✦</span><span>VECTOR DATABASES</span><span style="color:var(--accent)">✦</span><span>REAL-TIME PIPELINES</span><span style="color:var(--accent)">✦</span>
-    </div>
-  </div>
-</div>
 
 <section id="about" class="vp-x" style="max-width:1180px;margin:0 auto;padding:130px 40px 110px;scroll-margin-top:70px;box-sizing:border-box">
   <span id="content-start" tabindex="-1"></span>
-  <div data-reveal style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.16em;color:var(--accent);margin-bottom:22px">01 — ABOUT</div>
+  <div data-reveal class="vp-section-label" style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.16em;color:var(--accent);margin-bottom:22px">ABOUT</div>
   <div class="vp-about-grid" style="display:grid;grid-template-columns:minmax(0,1.5fr) minmax(260px,1fr);gap:70px;align-items:start">
     <div>
-      <h2 data-reveal style="margin:0;font-size:clamp(30px,3.4vw,46px);line-height:1.14;font-weight:600;letter-spacing:-.02em">A technical leader for systems where reliability is the <em style="font-family:'Newsreader',serif;font-style:italic;font-weight:400;color:var(--accent)">product.</em></h2>
-      <p data-reveal style="margin:30px 0 0;font-size:17.5px;line-height:1.7;color:#B4BACB;font-weight:300;max-width:60ch">I've spent my career on systems where failure isn't an option — trade booking at Point72, a ground-up security master at Centiva, a portfolio platform at Schonfeld processing 6M+ transactions a day at sub-second latency, big-data services at Bloomberg handling hundreds of millions of messages daily.</p>
-      <p data-reveal style="margin:20px 0 0;font-size:17.5px;line-height:1.7;color:#B4BACB;font-weight:300;max-width:60ch">That discipline carries directly into AI. I build workflows with the same standards: clear ownership, observability, recovery paths, and accountability for outcomes. My focus is multi-agent orchestration, RAG, and tool-using systems that earn their place in production.</p>
-      <div data-reveal class="vp-stats" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);margin-top:44px">
-        <div style="background:#0C0F15;padding:20px 22px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#5A6274;margin-bottom:8px">BASE</div><div style="font-size:15.5px">New York, NY</div></div>
-        <div style="background:#0C0F15;padding:20px 22px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#5A6274;margin-bottom:8px">FOCUS</div><div style="font-size:15.5px">AI platforms &amp; automation</div></div>
-        <div style="background:#0C0F15;padding:20px 22px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#5A6274;margin-bottom:8px">BACKGROUND</div><div style="font-size:15.5px">FinTech / Wall St.</div></div>
-        <div style="background:#0C0F15;padding:20px 22px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#5A6274;margin-bottom:8px">EDUCATION</div><div style="font-size:15.5px">B.S. Computer Eng., Waterloo</div></div>
-        <div style="background:#0C0F15;padding:20px 22px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#5A6274;margin-bottom:8px">LEADERSHIP</div><div style="font-size:15.5px">Teams of 8+, hiring &amp; mentoring</div></div>
-        <div style="background:#0C0F15;padding:20px 22px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#5A6274;margin-bottom:8px">BUILDING WITH</div><div style="font-size:15.5px">LLMs &amp; agents</div></div>
-      </div>
+      <h2 data-reveal style="margin:0;font-size:clamp(30px,3.4vw,46px);line-height:1.14;font-weight:600;letter-spacing:-.02em">Most of my work has been behind the scenes.</h2>
+      <p data-reveal style="margin:30px 0 0;font-size:17.5px;line-height:1.7;color:#B4BACB;font-weight:300;max-width:60ch">I’ve worked on trade booking at Point72, built a security master at Centiva, led development of a portfolio platform at Schonfeld processing more than 6 million transactions a day, and built Bloomberg services handling hundreds of millions of messages daily.</p>
+      <p data-reveal style="margin:20px 0 0;font-size:17.5px;line-height:1.7;color:#B4BACB;font-weight:300;max-width:60ch">The work ranges from instrument creation and trade processing to portfolio calculations and reporting. It usually involves old systems, new requirements, large data volumes, and little room for mistakes. I like making those systems easier to understand, operate, and change.</p>
+      <p data-reveal style="margin:20px 0 0;font-size:17.5px;line-height:1.7;color:#B4BACB;font-weight:300;max-width:60ch">Lately I’ve been applying that experience to LLM-based tools, including agent workflows, retrieval, and tool use. I’m interested in what holds up outside a demo: useful results, understandable failures, and a clear way for people to stay in control.</p>
     </div>
     <div data-reveal class="vp-about-photo" style="position:sticky;top:100px">
       <div style="border:1px solid rgba(255,255,255,.12);padding:10px;background:#0C0F15">
         <img src="val-headshot.jpeg" alt="Val Petrov" width="4032" height="3024" style="display:block;width:100%;height:auto;filter:var(--photo-filter)">
       </div>
-      <div style="display:flex;justify-content:space-between;margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;color:#5A6274"><span>VAL PETROV</span><span style="color:var(--accent)">EST. 2010 → ∞</span></div>
+      <div style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;color:#7B8398">VAL PETROV · NEW YORK</div>
     </div>
   </div>
 </section>
 
 <section id="career" style="border-top:1px solid rgba(255,255,255,.08);background:#0C0F15;scroll-margin-top:70px">
   <div class="vp-x" style="max-width:1180px;margin:0 auto;padding:110px 40px;box-sizing:border-box">
-    <div data-reveal style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.16em;color:var(--accent);margin-bottom:22px">02 — CAREER</div>
-    <h2 data-reveal style="margin:0 0 70px;font-size:clamp(30px,3.4vw,46px);line-height:1.14;font-weight:600;letter-spacing:-.02em;max-width:24ch">16+ years, five tier-one firms, one through-line: systems that <em style="font-family:'Newsreader',serif;font-style:italic;font-weight:400;color:var(--accent)">cannot fail.</em></h2>
+    <div data-reveal class="vp-section-label" style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.16em;color:var(--accent);margin-bottom:22px">EXPERIENCE</div>
+    <h2 data-reveal style="margin:0 0 70px;font-size:clamp(30px,3.4vw,46px);line-height:1.14;font-weight:600;letter-spacing:-.02em;max-width:24ch">Where I’ve worked.</h2>
 
     <div data-reveal class="vp-career-row" style="display:grid;grid-template-columns:150px 1px minmax(0,1fr);gap:0 40px;align-items:start;padding:34px 0;border-top:1px solid rgba(255,255,255,.08)">
       <div class="vp-career-date" style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);letter-spacing:.06em;padding-top:4px">2025 — NOW</div>
       <div class="vp-career-rail" style="background:rgba(255,255,255,.1);height:100%;position:relative"><span style="position:absolute;top:8px;left:-3.5px;width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)"></span></div>
       <div>
         <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:12px"><h3 style="margin:0;font-size:22px;font-weight:600">Tech Lead, Macro Technology</h3><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#99A1B3">POINT72 · NEW YORK</span></div>
-        <p style="margin:12px 0 0;font-size:15.5px;line-height:1.65;color:#99A1B3;font-weight:300;max-width:66ch">Technical ownership across trade booking, straight-through processing, and reconciliation for the macro platform's distributed financial-data stack — aligning systems and delivery across a critical operational workflow.</p>
+        <p style="margin:12px 0 0;font-size:15.5px;line-height:1.65;color:#99A1B3;font-weight:300;max-width:66ch">Lead technical work across trade booking, straight-through processing, and reconciliation for the macro platform. The job spans system design, delivery, and coordination across teams.</p>
         <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#7B8398;border:1px solid rgba(255,255,255,.12);padding:4px 10px;border-radius:999px">Murex</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#7B8398;border:1px solid rgba(255,255,255,.12);padding:4px 10px;border-radius:999px">C# / .NET</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#7B8398;border:1px solid rgba(255,255,255,.12);padding:4px 10px;border-radius:999px">Python</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#7B8398;border:1px solid rgba(255,255,255,.12);padding:4px 10px;border-radius:999px">Kafka</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#7B8398;border:1px solid rgba(255,255,255,.12);padding:4px 10px;border-radius:999px">Databricks</span></div>
       </div>
     </div>
@@ -197,7 +170,7 @@ body [style*="color:#5A6274"]{color:#7B8398 !important}
       <div class="vp-career-rail" style="background:rgba(255,255,255,.1);height:100%;position:relative"><span style="position:absolute;top:8px;left:-3.5px;width:8px;height:8px;border-radius:50%;background:#39404F"></span></div>
       <div>
         <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:12px"><h3 style="margin:0;font-size:22px;font-weight:600">Data Warehouse Lead, Security Master</h3><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#99A1B3">CENTIVA CAPITAL · NEW YORK</span></div>
-        <p style="margin:12px 0 0;font-size:15.5px;line-height:1.65;color:#99A1B3;font-weight:300;max-width:66ch">Built the firm's security master from the ground up: authorization services, instrument-creation pipelines, and Bloomberg vendor integrations. Led sprint delivery, hiring, and onboarding alongside the platform build.</p>
+        <p style="margin:12px 0 0;font-size:15.5px;line-height:1.65;color:#99A1B3;font-weight:300;max-width:66ch">Built the firm’s security master from the ground up, including authorization services, instrument-creation pipelines, and Bloomberg integrations. Also led hiring, onboarding, and sprint delivery for the team.</p>
         <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#7B8398;border:1px solid rgba(255,255,255,.12);padding:4px 10px;border-radius:999px">Python</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#7B8398;border:1px solid rgba(255,255,255,.12);padding:4px 10px;border-radius:999px">SQL Server</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#7B8398;border:1px solid rgba(255,255,255,.12);padding:4px 10px;border-radius:999px">Databricks</span></div>
       </div>
     </div>
@@ -207,7 +180,7 @@ body [style*="color:#5A6274"]{color:#7B8398 !important}
       <div class="vp-career-rail" style="background:rgba(255,255,255,.1);height:100%;position:relative"><span style="position:absolute;top:8px;left:-3.5px;width:8px;height:8px;border-radius:50%;background:#39404F"></span></div>
       <div>
         <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:12px"><h3 style="margin:0;font-size:22px;font-weight:600">Engineering Lead, Portfolio Management</h3><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#99A1B3">SCHONFELD · NEW YORK</span></div>
-        <p style="margin:12px 0 0;font-size:15.5px;line-height:1.65;color:#99A1B3;font-weight:300;max-width:66ch">Led a team of 8 engineers on an in-house portfolio management system processing 6M+ transactions a day with sub-second latency, on a scalable Kafka-based architecture.</p>
+        <p style="margin:12px 0 0;font-size:15.5px;line-height:1.65;color:#99A1B3;font-weight:300;max-width:66ch">Led eight engineers building and operating an in-house portfolio-management system that processed more than 6 million transactions a day with sub-second latency.</p>
         <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#7B8398;border:1px solid rgba(255,255,255,.12);padding:4px 10px;border-radius:999px">Kotlin</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#7B8398;border:1px solid rgba(255,255,255,.12);padding:4px 10px;border-radius:999px">Java</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#7B8398;border:1px solid rgba(255,255,255,.12);padding:4px 10px;border-radius:999px">Kafka</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#7B8398;border:1px solid rgba(255,255,255,.12);padding:4px 10px;border-radius:999px">Redis</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#7B8398;border:1px solid rgba(255,255,255,.12);padding:4px 10px;border-radius:999px">kdb+</span></div>
       </div>
     </div>
@@ -227,7 +200,7 @@ body [style*="color:#5A6274"]{color:#7B8398 !important}
       <div class="vp-career-rail" style="background:rgba(255,255,255,.1);height:100%;position:relative"><span style="position:absolute;top:8px;left:-3.5px;width:8px;height:8px;border-radius:50%;background:#39404F"></span></div>
       <div>
         <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:12px"><h3 style="margin:0;font-size:22px;font-weight:600">Senior Engineer — Big Data Platform &amp; MBS Analytics</h3><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#99A1B3">BLOOMBERG L.P. · NEW YORK</span></div>
-        <p style="margin:12px 0 0;font-size:15.5px;line-height:1.65;color:#99A1B3;font-weight:300;max-width:66ch">Five years across two teams: Hadoop + Solr services handling hundreds of millions of messages daily, and domain-rich WPF applications for mortgage-backed-securities structuring — including a novel concurrency-control solution for system throughput.</p>
+        <p style="margin:12px 0 0;font-size:15.5px;line-height:1.65;color:#99A1B3;font-weight:300;max-width:66ch">Worked on two teams over five years: Hadoop and Solr services handling hundreds of millions of messages daily, then desktop software used to structure mortgage-backed securities.</p>
         <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#7B8398;border:1px solid rgba(255,255,255,.12);padding:4px 10px;border-radius:999px">Java</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#7B8398;border:1px solid rgba(255,255,255,.12);padding:4px 10px;border-radius:999px">Hadoop</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#7B8398;border:1px solid rgba(255,255,255,.12);padding:4px 10px;border-radius:999px">Solr</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#7B8398;border:1px solid rgba(255,255,255,.12);padding:4px 10px;border-radius:999px">C# / WPF</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#7B8398;border:1px solid rgba(255,255,255,.12);padding:4px 10px;border-radius:999px">C++</span></div>
       </div>
     </div>
@@ -245,37 +218,34 @@ body [style*="color:#5A6274"]{color:#7B8398 !important}
 </section>
 
 <section id="work" class="vp-x" style="max-width:1180px;margin:0 auto;padding:110px 40px;scroll-margin-top:70px;box-sizing:border-box">
-  <div data-reveal style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.16em;color:var(--accent);margin-bottom:22px">03 — SELECTED WORK</div>
-  <h2 data-reveal style="margin:0 0 22px;font-size:clamp(30px,3.4vw,46px);line-height:1.14;font-weight:600;letter-spacing:-.02em;max-width:24ch">The evidence is in the <em style="font-family:'Newsreader',serif;font-style:italic;font-weight:400;color:var(--accent)">operating constraints.</em></h2>
-  <p data-reveal style="margin:0 0 48px;font-size:17px;line-height:1.7;color:#B4BACB;font-weight:300;max-width:64ch">A selection of production work. Details are intentionally limited to protect confidential systems and partners.</p>
+  <div data-reveal class="vp-section-label" style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.16em;color:var(--accent);margin-bottom:22px">SELECTED WORK</div>
+  <h2 data-reveal style="margin:0 0 22px;font-size:clamp(30px,3.4vw,46px);line-height:1.14;font-weight:600;letter-spacing:-.02em;max-width:24ch">A few projects in numbers.</h2>
+  <p data-reveal style="margin:0 0 48px;font-size:17px;line-height:1.7;color:#B4BACB;font-weight:300;max-width:64ch">I can’t publish code or architecture from past employers, but I can describe the scale of the work and what changed.</p>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08)">
-    <article data-reveal style="background:#0C0F15;padding:34px 30px">
+    <article data-reveal class="vp-work-card" style="background:#0C0F15;padding:34px 30px">
       <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.14em;color:var(--accent);margin-bottom:18px">PORTFOLIO MANAGEMENT · SCHONFELD</div>
-      <h3 style="margin:0;font-size:24px;line-height:1.2;font-weight:600">A portfolio platform built for volume and speed.</h3>
-      <p style="margin:18px 0 0;font-size:15.5px;line-height:1.7;color:#99A1B3;font-weight:300">Led an eight-engineer team on an in-house portfolio-management system processing more than 6M transactions per day at sub-second latency, using a scalable Kafka-based architecture.</p>
-      <div style="margin-top:26px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:#7B8398">TEAM LEADERSHIP · KAFKA · LOW LATENCY</div>
+      <h3 style="margin:0;font-size:24px;line-height:1.2;font-weight:600">6M+ daily transactions at sub-second latency.</h3>
+      <p style="margin:18px 0 0;font-size:15.5px;line-height:1.7;color:#99A1B3;font-weight:300">Led the eight-engineer team responsible for an in-house portfolio-management platform built on Kafka, Kotlin, Java, Redis, and kdb+.</p>
     </article>
-    <article data-reveal style="background:#0C0F15;padding:34px 30px">
+    <article data-reveal class="vp-work-card" style="background:#0C0F15;padding:34px 30px">
       <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.14em;color:var(--accent);margin-bottom:18px">MIDDLE OFFICE · MILLENNIUM</div>
-      <h3 style="margin:0;font-size:24px;line-height:1.2;font-weight:600">A path from next-day to same-day reporting.</h3>
-      <p style="margin:18px 0 0;font-size:15.5px;line-height:1.7;color:#99A1B3;font-weight:300">Consolidated T+1 PnL reporting, built a Kafka and Python proof of concept for T+0 delivery, and reduced redundant Murex trade data by 88% through SQL optimization.</p>
-      <div style="margin-top:26px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;color:#7B8398">WORKFLOW MODERNIZATION · KAFKA · SQL</div>
+      <h3 style="margin:0;font-size:24px;line-height:1.2;font-weight:600">88% less redundant trade data.</h3>
+      <p style="margin:18px 0 0;font-size:15.5px;line-height:1.7;color:#99A1B3;font-weight:300">Consolidated next-day P&amp;L reporting, built a Kafka and Python proof of concept for same-day delivery, and reduced duplicate Murex data through SQL changes.</p>
     </article>
   </div>
   <div data-reveal style="display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:30px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.08em">
     <a href="https://github.com/valpetrov/personal-site" target="_blank" rel="noopener" style="color:var(--accent)">VIEW SITE SOURCE ON GITHUB ↗</a>
-    <span style="color:#5A6274">PUBLIC WORK AND PROFESSIONAL CONTEXT</span>
     <a href="https://www.linkedin.com/in/valpetrov/" target="_blank" rel="noopener" style="color:#99A1B3">LINKEDIN ↗</a>
   </div>
 </section>
 
 <section id="stack" class="vp-x" style="max-width:1180px;margin:0 auto;padding:110px 40px;scroll-margin-top:70px;box-sizing:border-box">
-  <div data-reveal style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.16em;color:var(--accent);margin-bottom:22px">04 — STACK</div>
-  <h2 data-reveal style="margin:0 0 60px;font-size:clamp(30px,3.4vw,46px);line-height:1.14;font-weight:600;letter-spacing:-.02em">The toolkit, built for <em style="font-family:'Newsreader',serif;font-style:italic;font-weight:400;color:var(--accent)">production.</em></h2>
+  <div data-reveal class="vp-section-label" style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.16em;color:var(--accent);margin-bottom:22px">TOOLS</div>
+  <h2 data-reveal style="margin:0 0 60px;font-size:clamp(30px,3.4vw,46px);line-height:1.14;font-weight:600;letter-spacing:-.02em">What I work with.</h2>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08)">
     <div data-reveal style="background:#0C0F15;padding:30px 28px">
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:var(--accent);margin-bottom:18px">AGENTIC AI</div>
-      <div style="display:flex;flex-direction:column;gap:10px;font-size:15.5px;color:#B4BACB;font-weight:300"><span>LLM agents &amp; tool use</span><span>Multi-agent orchestration</span><span>RAG pipelines</span><span>LangChain / LangGraph</span><span>Claude &amp; OpenAI APIs</span><span>Vector DBs — Pinecone, Chroma</span></div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:var(--accent);margin-bottom:18px">LLM SYSTEMS</div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:15.5px;color:#B4BACB;font-weight:300"><span>Tool-using workflows</span><span>Retrieval and RAG</span><span>LangChain / LangGraph</span><span>Claude and OpenAI APIs</span><span>Pinecone / Chroma</span></div>
     </div>
     <div data-reveal style="background:#0C0F15;padding:30px 28px">
       <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:var(--accent);margin-bottom:18px">LANGUAGES</div>
@@ -285,25 +255,21 @@ body [style*="color:#5A6274"]{color:#7B8398 !important}
       <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:var(--accent);margin-bottom:18px">DATA &amp; INFRA</div>
       <div style="display:flex;flex-direction:column;gap:10px;font-size:15.5px;color:#B4BACB;font-weight:300"><span>Apache Kafka</span><span>Databricks / Delta Lake</span><span>Redis</span><span>SQL Server</span><span>Hadoop / HDFS</span></div>
     </div>
-    <div data-reveal style="background:#0C0F15;padding:30px 28px">
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:var(--accent);margin-bottom:18px">LEADERSHIP</div>
-      <div style="display:flex;flex-direction:column;gap:10px;font-size:15.5px;color:#B4BACB;font-weight:300"><span>Systems architecture</span><span>Team building &amp; hiring</span><span>Mentoring</span><span>Agile delivery</span></div>
-    </div>
   </div>
 </section>
 
 <section id="life" style="border-top:1px solid rgba(255,255,255,.08);background:#0C0F15;scroll-margin-top:70px">
   <div class="vp-x" style="max-width:1180px;margin:0 auto;padding:110px 40px;box-sizing:border-box">
-    <div data-reveal style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.16em;color:var(--accent);margin-bottom:22px">05 — OFF THE CLOCK</div>
-    <h2 data-reveal style="margin:0 0 60px;font-size:clamp(30px,3.4vw,46px);line-height:1.14;font-weight:600;letter-spacing:-.02em">Endurance is a <em style="font-family:'Newsreader',serif;font-style:italic;font-weight:400;color:var(--accent)">practice.</em></h2>
+    <div data-reveal class="vp-section-label" style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.16em;color:var(--accent);margin-bottom:22px">OUTSIDE WORK</div>
+    <h2 data-reveal style="margin:0 0 60px;font-size:clamp(30px,3.4vw,46px);line-height:1.14;font-weight:600;letter-spacing:-.02em">Cycling and tennis.</h2>
     <div class="vp-life-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:28px">
       <figure data-reveal style="margin:0">
         <div style="border:1px solid rgba(255,255,255,.12);padding:10px;background:#0A0C10;overflow:hidden"><img class="vp-life-img" src="val-cycling.jpeg" alt="Val cycling" width="4032" height="3024" loading="lazy" style="display:block;width:100%;height:380px;object-fit:cover;filter:var(--photo-filter);transition:transform .6s ease"></div>
-        <figcaption style="display:flex;justify-content:space-between;margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;color:#5A6274"><span>CYCLING — LONG ROADS, LONG PROBLEMS</span><span style="color:var(--accent)">01/02</span></figcaption>
+        <figcaption style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;color:#7B8398">CYCLING</figcaption>
       </figure>
       <figure data-reveal style="margin:0">
         <div style="border:1px solid rgba(255,255,255,.12);padding:10px;background:#0A0C10;overflow:hidden"><img class="vp-life-img" src="val-tennis.jpeg" alt="Val playing tennis" width="4032" height="3024" loading="lazy" style="display:block;width:100%;height:380px;object-fit:cover;filter:var(--photo-filter);transition:transform .6s ease"></div>
-        <figcaption style="display:flex;justify-content:space-between;margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;color:#5A6274"><span>TENNIS — STRATEGY AT MATCH SPEED</span><span style="color:var(--accent)">02/02</span></figcaption>
+        <figcaption style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;color:#7B8398">TENNIS</figcaption>
       </figure>
     </div>
   </div>
@@ -311,9 +277,9 @@ body [style*="color:#5A6274"]{color:#7B8398 !important}
 
 <section id="contact" style="border-top:1px solid rgba(255,255,255,.08);scroll-margin-top:70px">
   <div class="vp-x" style="max-width:1180px;margin:0 auto;padding:140px 40px 120px;text-align:center;box-sizing:border-box">
-    <div data-reveal style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.16em;color:var(--accent);margin-bottom:26px">06 — CONTACT</div>
-    <h2 data-reveal style="margin:0 auto;font-size:clamp(38px,5.4vw,76px);line-height:1.06;font-weight:600;letter-spacing:-.03em;max-width:18ch">Let's build reliable systems that <em style="font-family:'Newsreader',serif;font-style:italic;font-weight:400;color:var(--accent)">move work forward.</em></h2>
-    <p data-reveal style="margin:26px auto 0;font-size:18px;line-height:1.6;color:#99A1B3;font-weight:300;max-width:52ch">Open to select conversations about engineering leadership, AI platforms, and high-scale systems. If you need technical depth paired with delivery and team leadership, let's talk.</p>
+    <div data-reveal class="vp-section-label" style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.16em;color:var(--accent);margin:0 auto 26px">CONTACT</div>
+    <h2 data-reveal style="margin:0 auto;font-size:clamp(38px,5.4vw,76px);line-height:1.06;font-weight:600;letter-spacing:-.03em;max-width:18ch">Want to talk?</h2>
+    <p data-reveal style="margin:26px auto 0;font-size:18px;line-height:1.6;color:#99A1B3;font-weight:300;max-width:52ch">Email me about engineering leadership, financial systems, or practical applications of LLMs.</p>
     <div data-reveal style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:16px;margin-top:44px">
       <a href="mailto:val.petrov@gmail.com" class="vp-btn-accent" style="background:var(--accent);color:#0A0C10;font-weight:600;font-size:17px;padding:16px 32px;border-radius:999px">val.petrov@gmail.com</a>
       <a href="https://www.linkedin.com/in/valpetrov/" target="_blank" rel="noopener" style="border:1px solid rgba(255,255,255,.18);padding:15px 32px;border-radius:999px;font-size:17px">LinkedIn ↗</a>
@@ -327,7 +293,6 @@ body [style*="color:#5A6274"]{color:#7B8398 !important}
   </div>
   <footer class="vp-footer" style="border-top:1px solid rgba(255,255,255,.07);padding:22px 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;color:#7B8398">
     <span>© 2026 VAL PETROV · NEW YORK</span>
-    <span>BUILT BY AGENTS, WITH PURPOSE.</span>
   </footer>
 </section>
 
@@ -335,59 +300,12 @@ body [style*="color:#5A6274"]{color:#7B8398 !important}
 
 <script>
 (function () {
-  var recaptchaScreen = document.getElementById('recaptcha-screen');
-  var mainContent = document.getElementById('main-content');
-  var recaptchaForm = document.getElementById('recaptcha-form');
-  var verifyButton = document.getElementById('verify-button');
-  var errorMessage = document.getElementById('error-message');
   var menuButton = document.querySelector('.vp-menu-toggle');
   var primaryNavigation = document.getElementById('primary-navigation');
-  var SITE_KEY = '6LeiykksAAAAAHmd9e-M99xEOLU8X8bM33LNoFC6';
-  var revealed = false, canvasStarted = false, navigationStarted = false;
+  var revealed = false, navigationStarted = false;
 
-  if (sessionStorage.getItem('authenticated') === 'true') {
-    showMainContent();
-  }
-
-  if (window.grecaptcha && grecaptcha.enterprise) {
-    grecaptcha.enterprise.ready(function () { verifyButton.disabled = false; });
-  } else {
-    verifyButton.disabled = false;
-  }
-
-  recaptchaForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (!window.grecaptcha || !grecaptcha.enterprise) {
-      fail('Verification is unavailable right now. Please refresh or contact me directly at val.petrov@gmail.com.');
-      return;
-    }
-    verifyButton.disabled = true;
-    verifyButton.textContent = 'Verifying...';
-    grecaptcha.enterprise.ready(function () {
-      grecaptcha.enterprise.execute(SITE_KEY, { action: 'LOGIN' }).then(function (token) {
-        if (token) {
-          sessionStorage.setItem('authenticated', 'true');
-          showMainContent();
-        } else { fail(); }
-      }).catch(fail);
-    });
-  });
-
-  function fail(message) {
-    errorMessage.textContent = message || 'Verification failed. Please try again.';
-    errorMessage.style.display = 'block';
-    verifyButton.disabled = false;
-    verifyButton.textContent = 'Enter site';
-  }
-
-  function showMainContent() {
-    recaptchaScreen.style.display = 'none';
-    mainContent.style.display = 'block';
-    mainContent.focus({ preventScroll: true });
-    initReveal();
-    initNavigation();
-    initCanvas();
-  }
+  initReveal();
+  initNavigation();
 
   function initNavigation() {
     if (navigationStarted) return;
@@ -450,137 +368,6 @@ body [style*="color:#5A6274"]{color:#7B8398 !important}
     });
   }
 
-  /* ---- hero agent-network canvas ---- */
-  function initCanvas() {
-    if (canvasStarted) return;
-    var cv = document.getElementById('hero-canvas');
-    if (!cv) return;
-    canvasStarted = true;
-    var ctx = cv.getContext('2d');
-    var w = 0, h = 0, raf = null, running = false;
-    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var animate = !reduced;
-
-    function resize() {
-      var dpr = Math.min(window.devicePixelRatio || 1, 2);
-      w = cv.clientWidth; h = cv.clientHeight;
-      cv.width = Math.max(1, w * dpr); cv.height = Math.max(1, h * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-    resize();
-    var ro = new ResizeObserver(function () { resize(); if (!animate) drawFrame(0); });
-    ro.observe(cv);
-
-    var N = 52, nodes = [];
-    for (var i = 0; i < N; i++) {
-      nodes.push({
-        x: Math.random(), y: Math.random(),
-        vx: (Math.random() - 0.5) * 0.00022,
-        vy: (Math.random() - 0.5) * 0.00022,
-        r: 1.2 + Math.random() * 1.8
-      });
-    }
-    var pulses = [];
-    var mouse = { x: -9999, y: -9999 };
-    window.addEventListener('pointermove', function (e) {
-      var b = cv.getBoundingClientRect();
-      mouse.x = e.clientX - b.left; mouse.y = e.clientY - b.top;
-    }, { passive: true });
-
-    var rgbCache = {};
-    function accentRgb() {
-      var hex = getComputedStyle(document.body).getPropertyValue('--accent').trim() || '#5CE39C';
-      if (rgbCache[hex]) return rgbCache[hex];
-      var m = hex.replace('#', '');
-      var v = m.length === 3
-        ? [parseInt(m[0] + m[0], 16), parseInt(m[1] + m[1], 16), parseInt(m[2] + m[2], 16)]
-        : [parseInt(m.slice(0, 2), 16), parseInt(m.slice(2, 4), 16), parseInt(m.slice(4, 6), 16)];
-      rgbCache[hex] = v;
-      return v;
-    }
-
-    var LINK_D = 150;
-    function drawFrame(dt) {
-      var rgb = accentRgb(), ar = rgb[0], ag = rgb[1], ab = rgb[2];
-      ctx.clearRect(0, 0, w, h);
-      for (var n, k = 0; k < nodes.length; k++) {
-        n = nodes[k];
-        n.x += n.vx * dt; n.y += n.vy * dt;
-        if (n.x < -0.02) n.x = 1.02; if (n.x > 1.02) n.x = -0.02;
-        if (n.y < -0.02) n.y = 1.02; if (n.y > 1.02) n.y = -0.02;
-        var px = n.x * w, py = n.y * h;
-        var dx0 = px - mouse.x, dy0 = py - mouse.y;
-        var d2m = dx0 * dx0 + dy0 * dy0;
-        if (d2m < 130 * 130 && d2m > 1) {
-          var dm = Math.sqrt(d2m), f = (1 - dm / 130) * 0.00003 * dt;
-          n.x += (dx0 / dm) * f; n.y += (dy0 / dm) * f;
-        }
-      }
-      for (var a, ax, ay, b, bx, by, dx, dy, d2, alpha, ii = 0; ii < N; ii++) {
-        a = nodes[ii]; ax = a.x * w; ay = a.y * h;
-        for (var jj = ii + 1; jj < N; jj++) {
-          b = nodes[jj]; bx = b.x * w; by = b.y * h;
-          dx = ax - bx; dy = ay - by; d2 = dx * dx + dy * dy;
-          if (d2 < LINK_D * LINK_D) {
-            alpha = (1 - Math.sqrt(d2) / LINK_D) * 0.16;
-            ctx.strokeStyle = 'rgba(' + ar + ',' + ag + ',' + ab + ',' + alpha.toFixed(3) + ')';
-            ctx.lineWidth = 1;
-            ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx, by); ctx.stroke();
-            if (animate && Math.random() < 0.0006) pulses.push({ a: a, b: b, t: 0 });
-          }
-        }
-      }
-      for (var p, kk = pulses.length - 1; kk >= 0; kk--) {
-        p = pulses[kk];
-        p.t += dt * 0.0009;
-        if (p.t >= 1) { pulses.splice(kk, 1); continue; }
-        var ppx = (p.a.x + (p.b.x - p.a.x) * p.t) * w;
-        var ppy = (p.a.y + (p.b.y - p.a.y) * p.t) * h;
-        var g = ctx.createRadialGradient(ppx, ppy, 0, ppx, ppy, 9);
-        g.addColorStop(0, 'rgba(' + ar + ',' + ag + ',' + ab + ',.9)');
-        g.addColorStop(1, 'rgba(' + ar + ',' + ag + ',' + ab + ',0)');
-        ctx.fillStyle = g;
-        ctx.beginPath(); ctx.arc(ppx, ppy, 9, 0, Math.PI * 2); ctx.fill();
-      }
-      for (var nn, q = 0; q < nodes.length; q++) {
-        nn = nodes[q];
-        ctx.fillStyle = 'rgba(' + ar + ',' + ag + ',' + ab + ',.55)';
-        ctx.beginPath(); ctx.arc(nn.x * w, nn.y * h, nn.r, 0, Math.PI * 2); ctx.fill();
-      }
-    }
-
-    var last = performance.now();
-    function loop(now) {
-      if (!running) return;
-      var dt = Math.min(50, now - last); last = now;
-      drawFrame(dt);
-      raf = requestAnimationFrame(loop);
-    }
-    function start() {
-      if (!animate || running || document.hidden) return;
-      running = true;
-      last = performance.now();
-      raf = requestAnimationFrame(loop);
-    }
-    function stop() {
-      running = false;
-      if (raf) { cancelAnimationFrame(raf); raf = null; }
-    }
-    if (animate && 'IntersectionObserver' in window) {
-      var heroObserver = new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting) start(); else stop();
-      }, { threshold: 0 });
-      heroObserver.observe(document.getElementById('top'));
-      document.addEventListener('visibilitychange', function () {
-        if (document.hidden) stop();
-        else if (document.getElementById('top').getBoundingClientRect().bottom > 0) start();
-      });
-    } else if (animate) {
-      start();
-    } else {
-      drawFrame(16);
-    }
-  }
 })();
 </script>
 </body>
